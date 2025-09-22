@@ -1,89 +1,69 @@
 /* Styles généraux */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #0d6efd, #00c6ff);
+  font-family: Arial, sans-serif;
   color: #fff;
   text-align: center;
+  min-height: 100vh;
+
+  /* Fond animé dégradé */
+  background: linear-gradient(-45deg, #0d6efd, #6610f2, #6f42c1, #0dcaf0);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
+
+/* Animation du fond */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* En-tête */
 header {
-  padding: 40px 20px;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-header h1 {
-  font-size: 2.5em;
-  margin: 0;
-}
-
-header p {
-  font-size: 1.2em;
-  margin-top: 10px;
-}
-
-/* Section Hero */
-.hero {
-  padding: 60px 20px;
-  animation: fadeIn 2s ease-in-out;
-}
-
-.hero h2 {
+  padding: 30px;
   font-size: 2em;
-  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid #fff;
 }
 
-.hero p {
-  font-size: 1.1em;
-  margin-bottom: 30px;
+/* Sections */
+section {
+  margin: 40px auto;
+  padding: 30px;
+  max-width: 900px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+/* Effet quand on passe la souris */
+section:hover {
+  transform: translateY(-5px);
+  opacity: 0.95;
+}
+
+/* Boutons */
 button {
-  background: #fff;
-  color: #0d6efd;
+  background: #ffc107;
   border: none;
   padding: 12px 25px;
-  border-radius: 25px;
-  font-size: 1em;
+  margin: 15px;
+  font-size: 1.1em;
+  border-radius: 30px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
+/* Effet lumineux au hover */
 button:hover {
-  background: #0d6efd;
-  color: #fff;
-  transform: scale(1.1);
-}
-
-/* Témoignages */
-.testimonials {
-  padding: 60px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  margin: 20px;
-}
-
-.testimonial {
-  margin: 20px 0;
-  font-style: italic;
-}
-
-/* Section Join */
-.join {
-  padding: 60px 20px;
-}
-
-/* Pied de page */
-footer {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 0.9em;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  background: #ffeb3b;
+  color: #000;
+  box-shadow: 0 0 20px #ffeb3b, 0 0 40px #ffc107;
 }
