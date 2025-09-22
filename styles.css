@@ -1,103 +1,50 @@
-/* Section hero animé */
-.hero-animated {
-  position: relative;
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 40px 20px;
-  box-sizing: border-box;
-}
+<!-- HERO animé : requin qui sort de l'eau -->
+<section id="hero-animated" class="hero-animated">
+  <div class="hero-content">
+    <h1>Shark Agency LIV</h1>
+    <p class="subtitle">L'agence digitale qui dévore la concurrence</p>
+    <a class="cta" href="#services">Découvrir nos services</a>
+  </div>
 
-/* contenu texte au dessus de l'animation */
-.hero-animated .hero-content {
-  position: relative;
-  z-index: 6;
-  color: #ffffff;
-  text-align: center;
-  max-width: 960px;
-  padding: 20px;
-  backdrop-filter: blur(2px);
-}
+  <!-- SVG animé (vagues + requin) -->
+  <div class="ocean-wrap" aria-hidden="true">
+    <svg class="ocean-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- background gradient -->
+      <defs>
+        <linearGradient id="seaGrad" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#082032"/>
+          <stop offset="60%" stop-color="#0d3b66"/>
+          <stop offset="100%" stop-color="#003554"/>
+        </linearGradient>
 
-.hero-animated h1 {
-  font-size: 2.4rem;
-  margin: 0 0 10px;
-  letter-spacing: 1px;
-}
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.35"/>
+        </filter>
+      </defs>
 
-.hero-animated .subtitle {
-  font-size: 1.05rem;
-  margin-bottom: 18px;
-  opacity: 0.95;
-}
+      <!-- fond -->
+      <rect x="0" y="0" width="1200" height="400" fill="url(#seaGrad)"></rect>
 
-.hero-animated .cta {
-  display: inline-block;
-  background: #ffce00;
-  color: #081223;
-  padding: 12px 22px;
-  border-radius: 28px;
-  text-decoration: none;
-  font-weight: 700;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-  transition: transform .22s ease, box-shadow .22s ease;
-}
-.hero-animated .cta:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.32); }
+      <!-- vagues animées (3 couches, décalées) -->
+      <g class="waves" transform="translate(0,220)">
+        <path class="wave wave1" d="M0 60 Q150 10 300 60 T600 60 T900 60 T1200 60 V200 H0 Z" fill="#0b6b8f" opacity="0.9"></path>
+        <path class="wave wave2" d="M0 50 Q150 0 300 50 T600 50 T900 50 T1200 50 V200 H0 Z" fill="#0a617f" opacity="0.85"></path>
+        <path class="wave wave3" d="M0 70 Q150 20 300 70 T600 70 T900 70 T1200 70 V200 H0 Z" fill="#095b73" opacity="0.8"></path>
+      </g>
 
-/* svg wrapper */
-.ocean-wrap {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  z-index: 1;
-  pointer-events: none; /* laisse cliquer les boutons */
-}
-
-/* SVG full cover */
-.ocean-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* animation des vagues : translation horizontale */
-.wave {
-  transform-origin: 50% 50%;
-  animation: waveMove 10s linear infinite;
-}
-
-/* décalage individuel */
-.wave1 { animation-duration: 10s; transform: translateX(0); }
-.wave2 { animation-duration: 14s; transform: translateX(-120px); opacity: .9; }
-.wave3 { animation-duration: 18s; transform: translateX(-250px); opacity: .85; }
-
-/* animation du requin : il remonte (sort de l'eau) puis replonge en boucle */
-.shark {
-  transform-box: fill-box;
-  animation: sharkRise 6s ease-in-out infinite;
-}
-
-/* keyframes */
-@keyframes waveMove {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-240px); }
-}
-
-@keyframes sharkRise {
-  0%   { transform: translate(480px,180px) rotate(0deg) scale(0.95); opacity: 0.0; }
-  8%   { transform: translate(480px,110px) rotate(-6deg) scale(1); opacity: 1; } /* sortie */
-  40%  { transform: translate(480px,90px) rotate(-3deg) scale(1.02); } /* en surface */
-  60%  { transform: translate(480px,140px) rotate(4deg) scale(0.98); } /* redescend */
-  100% { transform: translate(480px,180px) rotate(5deg) scale(0.95); opacity: 0.0; }
-}
-
-/* responsive : texte plus petit sur mobile */
-@media (max-width: 600px) {
-  .hero-animated h1 { font-size: 1.6rem; }
-  .hero-animated .subtitle { font-size: .95rem; }
-  .shark { transform-origin: center; }
-}
+      <!-- requin stylisé (group) -->
+      <g class="shark" transform="translate(480,140)" filter="url(#shadow)">
+        <!-- corps -->
+        <path d="M-120,40 C-70,-40 70,-40 130,20 C110,0 80,-10 40,-8 C-5,-6 -45,10 -120,40Z"
+              fill="#111827"/>
+        <!-- dorsale -->
+        <path d="M-10,-10 L10,-60 L36,-24 Z" fill="#0b1b2a"/>
+        <!-- oeil -->
+        <circle cx="20" cy="0" r="4" fill="#fff"/>
+        <circle cx="21" cy="0.5" r="2" fill="#000"/>
+        <!-- bouche -->
+        <path d="M40,10 Q20,18 -10,20" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+</section>
