@@ -1,50 +1,8 @@
-<!-- HERO animé : requin qui sort de l'eau -->
-<section id="hero-animated" class="hero-animated">
-  <div class="hero-content">
-    <h1>Shark Agency LIV</h1>
-    <p class="subtitle">L'agence digitale qui dévore la concurrence</p>
-    <a class="cta" href="#services">Découvrir nos services</a>
-  </div>
-
-  <!-- SVG animé (vagues + requin) -->
-  <div class="ocean-wrap" aria-hidden="true">
-    <svg class="ocean-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <!-- background gradient -->
-      <defs>
-        <linearGradient id="seaGrad" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stop-color="#082032"/>
-          <stop offset="60%" stop-color="#0d3b66"/>
-          <stop offset="100%" stop-color="#003554"/>
-        </linearGradient>
-
-        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.35"/>
-        </filter>
-      </defs>
-
-      <!-- fond -->
-      <rect x="0" y="0" width="1200" height="400" fill="url(#seaGrad)"></rect>
-
-      <!-- vagues animées (3 couches, décalées) -->
-      <g class="waves" transform="translate(0,220)">
-        <path class="wave wave1" d="M0 60 Q150 10 300 60 T600 60 T900 60 T1200 60 V200 H0 Z" fill="#0b6b8f" opacity="0.9"></path>
-        <path class="wave wave2" d="M0 50 Q150 0 300 50 T600 50 T900 50 T1200 50 V200 H0 Z" fill="#0a617f" opacity="0.85"></path>
-        <path class="wave wave3" d="M0 70 Q150 20 300 70 T600 70 T900 70 T1200 70 V200 H0 Z" fill="#095b73" opacity="0.8"></path>
-      </g>
-
-      <!-- requin stylisé (group) -->
-      <g class="shark" transform="translate(480,140)" filter="url(#shadow)">
-        <!-- corps -->
-        <path d="M-120,40 C-70,-40 70,-40 130,20 C110,0 80,-10 40,-8 C-5,-6 -45,10 -120,40Z"
-              fill="#111827"/>
-        <!-- dorsale -->
-        <path d="M-10,-10 L10,-60 L36,-24 Z" fill="#0b1b2a"/>
-        <!-- oeil -->
-        <circle cx="20" cy="0" r="4" fill="#fff"/>
-        <circle cx="21" cy="0.5" r="2" fill="#000"/>
-        <!-- bouche -->
-        <path d="M40,10 Q20,18 -10,20" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </g>
-    </svg>
-  </div>
-</section>
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0d6efd; /* Bleu fond */
+    color: #fff; /* Texte en blanc pour contraster */
+}
