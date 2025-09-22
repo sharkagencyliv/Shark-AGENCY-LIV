@@ -1,69 +1,103 @@
-/* Styles généraux */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  color: #fff;
+/* Section hero animé */
+.hero-animated {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* contenu texte au dessus de l'animation */
+.hero-animated .hero-content {
+  position: relative;
+  z-index: 6;
+  color: #ffffff;
   text-align: center;
-  min-height: 100vh;
-
-  /* Fond animé dégradé */
-  background: linear-gradient(-45deg, #0d6efd, #6610f2, #6f42c1, #0dcaf0);
-  background-size: 400% 400%;
-  animation: gradientBG 12s ease infinite;
+  max-width: 960px;
+  padding: 20px;
+  backdrop-filter: blur(2px);
 }
 
-/* Animation du fond */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.hero-animated h1 {
+  font-size: 2.4rem;
+  margin: 0 0 10px;
+  letter-spacing: 1px;
 }
 
-/* En-tête */
-header {
-  padding: 30px;
-  font-size: 2em;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background: rgba(0, 0, 0, 0.4);
-  border-bottom: 2px solid #fff;
-}
-
-/* Sections */
-section {
-  margin: 40px auto;
-  padding: 30px;
-  max-width: 900px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Effet quand on passe la souris */
-section:hover {
-  transform: translateY(-5px);
+.hero-animated .subtitle {
+  font-size: 1.05rem;
+  margin-bottom: 18px;
   opacity: 0.95;
 }
 
-/* Boutons */
-button {
-  background: #ffc107;
-  border: none;
-  padding: 12px 25px;
-  margin: 15px;
-  font-size: 1.1em;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+.hero-animated .cta {
+  display: inline-block;
+  background: #ffce00;
+  color: #081223;
+  padding: 12px 22px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.hero-animated .cta:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.32); }
+
+/* svg wrapper */
+.ocean-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1;
+  pointer-events: none; /* laisse cliquer les boutons */
 }
 
-/* Effet lumineux au hover */
-button:hover {
-  background: #ffeb3b;
-  color: #000;
-  box-shadow: 0 0 20px #ffeb3b, 0 0 40px #ffc107;
+/* SVG full cover */
+.ocean-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* animation des vagues : translation horizontale */
+.wave {
+  transform-origin: 50% 50%;
+  animation: waveMove 10s linear infinite;
+}
+
+/* décalage individuel */
+.wave1 { animation-duration: 10s; transform: translateX(0); }
+.wave2 { animation-duration: 14s; transform: translateX(-120px); opacity: .9; }
+.wave3 { animation-duration: 18s; transform: translateX(-250px); opacity: .85; }
+
+/* animation du requin : il remonte (sort de l'eau) puis replonge en boucle */
+.shark {
+  transform-box: fill-box;
+  animation: sharkRise 6s ease-in-out infinite;
+}
+
+/* keyframes */
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-240px); }
+}
+
+@keyframes sharkRise {
+  0%   { transform: translate(480px,180px) rotate(0deg) scale(0.95); opacity: 0.0; }
+  8%   { transform: translate(480px,110px) rotate(-6deg) scale(1); opacity: 1; } /* sortie */
+  40%  { transform: translate(480px,90px) rotate(-3deg) scale(1.02); } /* en surface */
+  60%  { transform: translate(480px,140px) rotate(4deg) scale(0.98); } /* redescend */
+  100% { transform: translate(480px,180px) rotate(5deg) scale(0.95); opacity: 0.0; }
+}
+
+/* responsive : texte plus petit sur mobile */
+@media (max-width: 600px) {
+  .hero-animated h1 { font-size: 1.6rem; }
+  .hero-animated .subtitle { font-size: .95rem; }
+  .shark { transform-origin: center; }
 }
