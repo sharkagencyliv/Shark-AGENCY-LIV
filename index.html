@@ -1,51 +1,231 @@
-<!DOCTYPE html>
+<!--
+Fichier : index.html
+Agence : Les Îles Agency (TikTok Live)
+Couleurs : Noir, Doré, Rouge
+Décor : Palmiers (SVG)
+
+INSTRUCTIONS DE DÉPLOIEMENT RAPIDE SUR GITHUB PAGES :
+1) Crée un dépôt GitHub (public) nommé par ex. "les-iles-agency".
+2) Ajoute ce fichier index.html à la racine du dépôt et commit/push.
+3) Dans les paramètres du dépôt (Settings > Pages), choisis la branche main et le dossier '/' puis sauvegarde. Le site sera disponible à https://<ton-nom-utilisateur>.github.io/les-iles-agency/ (attends quelques minutes).
+
+PERSONNALISATION RAPIDE :
+- Pour changer l'email des candidatures : modifie la constante CONTACT_EMAIL dans le script en bas.
+- Pour remplacer le SVG des palmiers par une image, remplace l'élément <svg class="palm"> par une <img src="URL_IMAGE" />.
+
+--><!doctype html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shark Agency LIV</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Les Îles Agency — TikTok Live</title>
+  <meta name="description" content="Les Îles Agency — Accompagnement TikTok Live : coaching, modération, partenariats, recrutement de créateurs." />
+  <meta name="theme-color" content="#070607" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23070607'/%3E%3Ctext x='50' y='60' font-size='36' text-anchor='middle' fill='%23e6b73a' font-family='Arial'%3EÎ%3C/text%3E%3C/svg%3E">
+  <style>
+    :root{
+      --bg:#060606;
+      --gold:#e6b73a;
+      --red:#ff2d2d;
+      --muted:#bfbfbf;
+      --glass: rgba(255,255,255,0.03);
+      --card: linear-gradient(135deg, rgba(230,183,58,0.06), rgba(255,45,45,0.03));
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#fff;background: radial-gradient(1200px 600px at 10% 10%, rgba(230,183,58,0.03), transparent), var(--bg);}
+    header{position:relative;min-height:85vh;display:flex;align-items:center;justify-content:center;padding:48px 20px}
+    .container{width:1100px;max-width:96%;margin:0 auto}/* Hero */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center}
+.brand{max-width:720px}
+.logo{display:flex;align-items:center;gap:14px}
+.logo .icon{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--red));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.6);}
+.logo h1{margin:0;font-size:28px;letter-spacing:0.5px}
+.logo small{display:block;font-size:12px;color:var(--muted)}
+.tag{font-size:44px;line-height:1.02;margin:18px 0 10px;text-shadow:0 6px 30px rgba(230,183,58,0.08);}
+.tag .glow{color:var(--gold);text-shadow:0 0 12px rgba(230,183,58,0.9),0 6px 30px rgba(0,0,0,0.6)}
+.cta{display:flex;gap:12px;margin-top:18px}
+.btn{padding:12px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:600}
+.btn-primary{background:linear-gradient(90deg,var(--red),#ff7b7b);color:#fff;box-shadow:0 8px 30px rgba(255,45,45,0.12)}
+.btn-outline{background:transparent;border:1px solid rgba(230,183,58,0.25);color:var(--gold)}
+.card-right{padding:20px;background:var(--card);border-radius:16px;backdrop-filter:blur(6px);box-shadow:0 6px 30px rgba(0,0,0,0.6)}
+
+/* Palm SVG */
+.palm-wrap{display:flex;gap:8px;align-items:center}
+svg.palm{width:100%;height:auto;display:block}
+
+/* Sections */
+section{padding:72px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service{padding:20px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06));border:1px solid rgba(255,255,255,0.02);min-height:140px}
+.service h3{margin:6px 0}
+.about p{color:var(--muted);line-height:1.6}
+
+/* Join form */
+form{display:grid;gap:12px}
+input,textarea,select{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:10px;color:#fff}
+.small{font-size:13px;color:var(--muted)}
+
+footer{padding:36px 0;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+/* Responsiveness */
+@media (max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.container{padding:0 10px}}
+
+/* Micro animations */
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+
+  </style>
 </head>
-<body>
+<body><header>
+  <div class="container">
+    <div class="hero">
+      <div class="brand">
+        <div class="logo">
+          <div class="icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 20c0-6 8-10 8-10s1 6 5 6" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/></svg>
+          </div>
+          <div>
+            <h1>Les Îles Agency</h1>
+            <small>Agence TikTok Live — coaching · modération · partenariats</small>
+          </div>
+        </div><h2 class="tag"><span class="glow">Brille en Live</span> — transforme tes followers en fans.</h2>
+    <p class="small">Nous propulsons les créateurs TikTok Live : du setup technique au partenariat rémunéré. Présence, énergie et résultats.</p>
 
-  <!-- Section Logo qui sort de l'eau -->
-  <section class="hero-logo">
-    <div class="waves"></div>
-    <img src="https://i.postimg.cc/rRK57jMk/IMG-20250921-WA0001.jpg" alt="Logo Shark Agency LIV" class="shark-logo">
-    <h1>Shark Agency LIV</h1>
-    <p>Ton talent mérite d’être vu</p>
-  </section>
+    <div class="cta">
+      <button class="btn btn-primary" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">Postule maintenant</button>
+      <button class="btn btn-outline" onclick="contactOpen()">Contactez-nous</button>
+    </div>
 
-  <!-- Section Présentation -->
-  <section>
-    <h2>🚀 Libère ton potentiel</h2>
-    <p>
-      Tu es créateur ou artiste ? Avec <strong>Shark Agency LIV</strong>, ton talent devient une véritable marque.  
-      👉 Ici, on ne suit pas la vague… on la crée.
-    </p>
-    
-  </section>
+    <div style="margin-top:20px;display:flex;gap:8px;align-items:center;color:var(--muted)">
+      <span>Suivez-nous :</span>
+      <a href="#" aria-label="TikTok" style="color:var(--muted);text-decoration:none;margin-left:6px">TikTok</a>
+      <a href="#" aria-label="Instagram" style="color:var(--muted);text-decoration:none;margin-left:12px">Instagram</a>
+    </div>
+  </div>
 
-  <!-- Section Témoignages -->
-  <section>
-    <h2>🌟 Ils nous font confiance</h2>
-    <p>💬 « Grâce à Shark Agency LIV, j’ai triplé mes abonnés en quelques semaines. » – Un vidéaste</p>
-    <p>💬 « Une équipe qui croit vraiment en ton potentiel. » – Une créatrice de mode</p>
-    <p>💬 « Ils m’ont aidée à transformer ma passion en carrière. » – Une chanteuse</p>
-  </section>
+  <div class="card-right float">
+    <!-- Palm SVG decorative -->
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="flex:1">
+        <svg class="palm" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#e6b73a" />
+              <stop offset="1" stop-color="#ff2d2d" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="200" height="160" rx="12" fill="rgba(255,255,255,0.02)"/>
+          <!-- Palm silhouettes -->
+          <g transform="translate(10,20) scale(0.9)">
+            <path d="M50 110c-6-40 10-70 10-70s-18 6-30 0c12 22 10 44 10 44s-20-20-36-10c18 18 12 50 12 50" fill="none" stroke="url(#g1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+            <path d="M110 130c10-48 36-86 36-86s-20 10-36 8c18 26 18 54 18 54s-30-24-52-8c26 26 34 38 34 38" fill="none" stroke="url(#g1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+          </g>
+        </svg>
+      </div>
+      <div style="width:120px;text-align:right">
+        <div style="font-weight:700;color:var(--gold);font-size:18px">+200</div>
+        <div class="small">Lives boostés</div>
+        <div style="height:10px"></div>
+        <div style="font-weight:700;color:var(--red);font-size:18px">5K+</div>
+        <div class="small">Vues moyennes / live</div>
+      </div>
+    </div>
 
-  <!-- Section Rejoindre -->
-  <section>
-    <h2>🤝 Rejoins l’agence</h2>
-    <p>
-      Nous recrutons des <strong>créateurs ambitieux</strong> et des <strong>artistes visionnaires</strong>.  
-      Prêt à briller ?
-    </p>
-    
-  </section>
-<a href="https://docs.google.com/forms/d/e/TON-LIEN-COPIÉ/viewform" target="_blank">
-  <button>Postuler maintenant</button>
-</a>
-</a>
-</body>
-</html>
+    <div style="margin-top:16px;color:var(--muted)">Services rapides :</div>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <div style="flex:1;padding:10px;border-radius:12px;background:linear-gradient(90deg, rgba(230,183,58,0.06), rgba(255,45,45,0.03));text-align:center">Coaching</div>
+      <div style="flex:1;padding:10px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06));text-align:center">Modération</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</header><main>
+  <div class="container">
+    <section id="about" class="about">
+      <h2>À propos</h2>
+      <p>Les Îles Agency aide les créateurs TikTok à captiver leur audience en direct. Nous offrons : coaching, stratégie de contenu, modération professionnelle, optimisation de monétisation et gestion de partenariats. Notre approche est personnalisée : performance = authenticité.</p>
+    </section><section id="services">
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="service">
+      <h3>Coaching Live</h3>
+      <p class="small">Cours privés & groupe pour améliorer engagement, scripts et conversion en live.</p>
+    </div>
+    <div class="service">
+      <h3>Setup & Tech</h3>
+      <p class="small">Assistance pour cams, sons, overlays et optimisation du flux pour un rendu pro.</p>
+    </div>
+    <div class="service">
+      <h3>Modération & Team</h3>
+      <p class="small">Moderateurs formés + animateurs pour dynamiser tes sessions en direct.</p>
+    </div>
+    <div class="service">
+      <h3>Partenariats</h3>
+      <p class="small">Négociation de deals, placements produits et gestion d'influenceurs.</p>
+    </div>
+    <div class="service">
+      <h3>Monétisation</h3>
+      <p class="small">Stratégies cadeaux, abonnements et offres exclusives pour convertir l'audience.</p>
+    </div>
+    <div class="service">
+      <h3>Analyse</h3>
+      <p class="small">Reporting clair : vues, dons, rétention — pour améliorer chaque live.</p>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <h2>Rejoindre l'agence</h2>
+  <p class="small">Tu veux streamer avec nous ? Remplis ce formulaire et on te recontacte.</p>
+  <form id="applyForm" onsubmit="handleApply(event)">
+    <input type="text" id="name" placeholder="Nom complet" required />
+    <input type="text" id="tiktok" placeholder="Pseudo TikTok (ex : @moi)" required />
+    <input type="number" id="age" placeholder="Âge" min="13" />
+    <input type="text" id="followers" placeholder="Nombre d'abonnés (approx.)" />
+    <textarea id="pitch" rows="4" placeholder="Parle-nous de ton style de live / motivations" required></textarea>
+    <div style="display:flex;gap:10px">
+      <button type="submit" class="btn btn-primary">Envoyer ma candidature</button>
+      <button type="button" class="btn btn-outline" onclick="saveDraft()">Sauvegarder en brouillon</button>
+    </div>
+    <div id="msg" class="small" style="margin-top:8px;color:var(--muted)"></div>
+  </form>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p class="small">Pour partenariats et questions : <strong id="contactEmail">les.iles.agency.corse@gmail.com</strong></p>
+  <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+    <a class="btn btn-outline" href="#">TikTok</a>
+    <a class="btn btn-outline" href="#">Instagram</a>
+    <a class="btn btn-outline" href="#">Discord</a>
+  </div>
+</section>
+
+  </div>
+</main><footer>
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div>© <strong>Les Îles Agency</strong> — Tous droits réservés</div>
+    <div class="small">Design : Noir · Doré · Rouge · Palmiers</div>
+  </div>
+</footer><script>
+  // Modifiable : email de contact
+  const CONTACT_EMAIL = 'les.iles.agency.corse@gmail.com';
+  document.getElementById('contactEmail').innerText = CONTACT_EMAIL;
+
+  function contactOpen(){
+    window.location.href = 'mailto:'+CONTACT_EMAIL+'?subject=Contact%20Les%20Iles%20Agency';
+  }
+
+  function handleApply(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const tiktok = document.getElementById('tiktok').value.trim();
+    const age = document.getElementById('age').value.trim();
+    const followers = document.getElementById('followers').value.trim();
+    const pitch = document.getElementById('pitch').value.trim();
+
+    const body = encodeURIComponent(`Nouvelle candidature%0A%0ANom: ${name}%0APseudo: ${tiktok}%0Aages: ${age}%0AFollowers: ${followers}%0A%0AMotivation:%0A${pitch}`);
+    const subject =
